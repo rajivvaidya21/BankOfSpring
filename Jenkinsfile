@@ -12,13 +12,11 @@ agent any
 		
 		stage(build){
 				steps {
-
-				dir('BankOfSpring'){
  				 sh "ls"
 				  withMaven(maven : 'Maven') {
                   sh 'mvn clean install'
 				}  
-            }
+            
             }
 		}
 		
