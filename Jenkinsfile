@@ -14,7 +14,7 @@ agent any
 				steps {
  				 sh "ls"
 				  withMaven(maven : 'Maven') {
-                  sh 'mvn clean install'
+                  sh 'mvn clean install -Dmaven.test.skip=true'
 				}  
             
             }
