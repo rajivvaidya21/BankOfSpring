@@ -24,7 +24,7 @@ agent any
 		{
 		steps{
 		 	withMaven(maven : 'Maven') {
-				sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
+				sh 'mvn verify -Dmaven.test.skip=true org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
                }
 			}
 		}
