@@ -23,8 +23,9 @@ agent any
 		stage("Code Quality")
 		{
 		steps{
+		 	withMaven(maven : 'Maven') {
 				sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
-               
+               }
 			}
 		}
 	
