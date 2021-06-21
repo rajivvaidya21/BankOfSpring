@@ -20,7 +20,7 @@ agent any
             }
 		}
 		
-		stage("Code Quality")
+		stage("Static Code Analysis")
 		{
 		steps{
 		 	withMaven(maven : 'Maven') {
@@ -28,7 +28,26 @@ agent any
                }
 			}
 		}
-	
+		
+		stage("Artifactory Upload")
+		{
+			steps{
+		 	rtUpload (
+   		 serverId: 'jfrog',
+    		spec: '''{
+          "files": [
+            {
+              "pattern": "{project.basedir}/../target/bankofspring-0.0.1-SNAPSHOT.jar",
+              "target": "default-maven-local"
+            }
+       			  	]
+   				 }''',
+   				buildName: 'BuildByCylock',
+    			buildNumber: '1',
+ 
+)
+			}
+		}
 	}
 
 
