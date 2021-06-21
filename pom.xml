@@ -25,7 +25,7 @@
 		<sonar.projectKey>rajivvaidya21_BankOfSpring</sonar.projectKey>
   		<sonar.organization>cylock</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-  		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
+  		<sonar.jacoco.xmlReportPaths>${project.basedir}/../target/jacoco.exec</sonar.jacoco.xmlReportPaths>
 	</properties>
 	
 	
