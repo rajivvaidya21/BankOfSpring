@@ -38,7 +38,7 @@ agent any
     		spec: '''{
           "files": [
             {
-              "pattern": "/target/bankofspring-0.0.1-SNAPSHOT.jar",
+              "pattern": "BankOfSpring/target/bankofspring-0.0.1-SNAPSHOT.jar",
               "target": "default-maven-local"
             }
        			  	]
