@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @Accessors(chain = true)
 @NoArgsConstructor
 @Entity
-public class Account extends BaseDomainObject {
+public class Account extends BaseDomainObjectTest {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

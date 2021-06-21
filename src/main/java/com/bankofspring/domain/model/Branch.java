@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 @Accessors(chain = true)
 @NoArgsConstructor
 @Entity
-public class Branch extends BaseDomainObject {
+public class Branch extends BaseDomainObjectTest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long branchId;
