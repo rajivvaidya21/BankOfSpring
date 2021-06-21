@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.persistence.MappedSuperclass;
 
@@ -22,6 +24,7 @@ import java.util.Date;
 @MappedSuperclass
 @Data
 @NoArgsConstructor
+@RunWith(SpringRunner.class)
 public abstract class BaseDomainObjectTest implements Serializable {
 
 	

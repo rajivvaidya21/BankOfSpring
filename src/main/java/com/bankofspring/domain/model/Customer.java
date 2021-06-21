@@ -14,7 +14,7 @@ import java.util.Set;
 @Setter
 @Accessors(chain = true)
 @Entity
-public class Customer extends BaseDomainObjectTest {
+public class Customer extends BaseDomainObject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
