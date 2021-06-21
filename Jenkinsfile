@@ -32,21 +32,17 @@ agent any
 		stage("Artifactory Upload")
 		{
 			steps{
-			sh "ls"
-		 	rtUpload (
-   		 serverId: 'jfrog',
-    		spec: '''{
-          "files": [
-            {
-              "pattern": "BankOfSpring/target/bankofspring-0.0.1-SNAPSHOT.jar",
-              "target": "default-maven-local"
-            }
-       			  	]
-   				 }''',
-   				buildName: 'BuildByCylock',
-    			buildNumber: '1',
- 
-)
+		 
+   			 def server = Artifactory.server 'jfrog'
+                 def uploadSpec = """{
+                    "files": [{
+                     "pattern": "BankOfSpring/target/bankofspring-0.0.1-SNAPSHOT.jar",
+              		 "target": "default-maven-local"
+                    }]
+                 }"""
+
+                 server.upload(uploadSpec) 
+
 			}
 		}
 	}
