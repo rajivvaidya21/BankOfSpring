@@ -32,12 +32,13 @@ agent any
 		stage("Artifactory Upload")
 		{
 			steps{
+			sh "ls"
 		 	rtUpload (
    		 serverId: 'jfrog',
     		spec: '''{
           "files": [
             {
-              "pattern": "{project.basedir}/../target/bankofspring-0.0.1-SNAPSHOT.jar",
+              "pattern": "/target/bankofspring-0.0.1-SNAPSHOT.jar",
               "target": "default-maven-local"
             }
        			  	]
