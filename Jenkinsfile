@@ -32,17 +32,17 @@ agent any
 		stage("Artifactory Upload")
 		{
 			steps{
-		 
-   			 def server = Artifactory.server 'jfrog'
-                 def uploadSpec = """{
-                    "files": [{
-                     "pattern": "BankOfSpring/target/bankofspring-0.0.1-SNAPSHOT.jar",
-              		 "target": "default-maven-local"
-                    }]
-                 }"""
-
-                 server.upload(uploadSpec) 
-
+				 script { 
+		   			 def server = Artifactory.server 'jfrog'
+		                 def uploadSpec = """{
+		                    "files": [{
+		                     "pattern": "BankOfSpring/target/bankofspring-0.0.1-SNAPSHOT.jar",
+		              		 "target": "default-maven-local"
+		                    }]
+		                 }"""
+		
+		                 server.upload(uploadSpec) 
+				}
 			}
 		}
 	}
