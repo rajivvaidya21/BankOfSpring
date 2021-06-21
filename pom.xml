@@ -25,6 +25,7 @@
 		<sonar.projectKey>rajivvaidya21_BankOfSpring</sonar.projectKey>
   		<sonar.organization>cylock</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+  		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
 	</properties>
 	
 	
@@ -110,6 +111,14 @@
     <artifactId>javassist</artifactId>
     <version>3.23.1-GA</version>
 </dependency>
+
+<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+<dependency>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.7</version>
+</dependency>
+
 	</dependencies>
 
 	<build>
@@ -118,6 +127,27 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>${jacoco.version}</version>
+    <executions>
+        <execution>
+            <id>jacoco-initialize</id>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+        </execution>
+        <execution>
+            <id>jacoco-site</id>
+            <phase>package</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
 		</plugins>
 	</build>
 
