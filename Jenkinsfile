@@ -65,7 +65,7 @@ agent any
 def sendEmail(){
     
     emailext body: "Check console output at ${env.BUILD_URL} to view the results",
-    subject: "${env.JOB_BASE_NAME} # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}"
+    subject: "${env.JOB_BASE_NAME} # ${env.BUILD_NUMBER} - ${env.BUILD_STATUS}",
     to: 'rajivvaidya212@outlook.com'
     
 }
