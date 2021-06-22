@@ -34,7 +34,7 @@ agent any
 			steps{
 			
 			rtUpload (
-        serverId: "main",
+        serverId: "jfrog",
         spec:
             """{
               "files": [
