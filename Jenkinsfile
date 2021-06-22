@@ -1,3 +1,4 @@
+def SERVER_ID =  "jfrog"
 pipeline{
 
 agent any
@@ -36,12 +37,12 @@ agent any
 				sh "cd BankOfSpring"
 				
 			    rtUpload (
-				        serverId: "jfrog",
+				        serverId: SERVER_ID,
 				        spec:
 				            """{
 				              "files": [
 				                {
-				                  "pattern": "./target/bankofspring-0.0.1-SNAPSHOT.jar",
+				                  "pattern": "./target/*.jar",
 				              	  "target": "default-maven-local/bank/"
 				                }
 				             ]
