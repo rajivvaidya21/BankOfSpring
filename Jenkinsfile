@@ -10,7 +10,7 @@ agent any
             }
 		}
 		
-		stage(build){
+		stage(Build){
 				steps {
  				 sh "ls"
 				  withMaven(maven : 'Maven') {
@@ -32,14 +32,14 @@ agent any
 		stage("Artifactory Upload")
 		{
 			steps{
-			    
+
 			    rtUpload (
 				        serverId: "jfrog",
 				        spec:
 				            """{
 				              "files": [
 				                {
-				                  "pattern": "./BankOfSpring/target/*.jar",
+				                  "pattern": "./BankOfSpring/target/bankofspring-0.0.1-SNAPSHOT.jar",
 				              	  "target": "default-maven-local/bank/"
 				                }
 				             ]
@@ -47,8 +47,10 @@ agent any
         			failNoOp: true
     				)
 			
-
-			
+				rtPublishBuildInfo (
+				                    serverId: SERVER_ID
+				                )
+							
 			
 			}
 		}
