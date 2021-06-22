@@ -10,7 +10,7 @@ agent any
             }
 		}
 		
-		stage(Build){
+		stage("Build"){
 				steps {
  				 sh "ls"
 				  withMaven(maven : 'Maven') {
