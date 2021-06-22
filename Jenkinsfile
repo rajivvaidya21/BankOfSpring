@@ -3,14 +3,14 @@ pipeline{
 agent any
 
   	stages{
-		stage(checkout){
+		stage(Checkout){
 		steps 
 			{
 			checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/rajivvaidya21/BankOfSpring']]])
             }
 		}
 		
-		stage(build){
+		stage(Build){
 				steps {
  				 sh "ls"
 				  withMaven(maven : 'Maven') {
@@ -32,10 +32,6 @@ agent any
 		stage("Artifactory Upload")
 		{
 			steps{
-			
-			    sh "cd BankOfSpring"
-			    sh "ls"
-			    
 			    
 			    rtUpload (
 				        serverId: "jfrog",
@@ -43,7 +39,7 @@ agent any
 				            """{
 				              "files": [
 				                {
-				                  "pattern": "./target/bankofspring-0.0.1-SNAPSHOT.jar",
+				                  "pattern": "./BankOfSpring/target/*.jar",
 				              	  "target": "default-maven-local/bank/"
 				                }
 				             ]
