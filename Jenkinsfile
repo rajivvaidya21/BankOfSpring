@@ -32,8 +32,10 @@ agent any
 		stage("Artifactory Upload")
 		{
 			steps{
-			dir("BankOfSpring"){
+			
+			    sh "cd BankOfSpring"
 			    sh "ls"
+			    
 			    
 			    rtUpload (
 				        serverId: "jfrog",
@@ -41,14 +43,14 @@ agent any
 				            """{
 				              "files": [
 				                {
-				                  "pattern": "target/bankofspring-0.0.1-SNAPSHOT.jar",
+				                  "pattern": "./target/bankofspring-0.0.1-SNAPSHOT.jar",
 				              	  "target": "default-maven-local/bank/"
 				                }
 				             ]
 				            }""",
         			failNoOp: true
     				)
-			}
+			
 
 			
 			
