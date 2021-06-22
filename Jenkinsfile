@@ -32,18 +32,21 @@ agent any
 		stage("Artifactory Upload")
 		{
 			steps{
-				 script { 
-		   			 def server = Artifactory.server 'jfrog'
-		                 def uploadSpec = """{
-		                    "files": [{
-		                     "pattern": "**/target/*.jar",
-              				 "target": "default-maven-local"
-		                    }]
-		                 }"""
-		
-		                 server.upload(uploadSpec) 
-		       
-				}
+			
+			rtUpload (
+        serverId: "main",
+        spec:
+            """{
+              "files": [
+                {
+                  "pattern": "**/target/*.jar",
+              	  "target": "default-maven-local"
+                }
+             ]
+            }""",
+        failNoOp: true
+    )
+			
 			}
 		}
 	}
