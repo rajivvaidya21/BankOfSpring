@@ -53,7 +53,7 @@ agent any
 				rtPublishBuildInfo (
 				                    serverId: SERVER_ID
 				                )
-					sendEmail()		
+					
 			
 			}
 		}
@@ -62,10 +62,28 @@ agent any
 }
 
 
-def sendEmail(){
+def sendEmail(status){
     
     emailext body: "Check console output at ${env.BUILD_URL} to view the results",
-    subject: "${env.JOB_BASE_NAME} # ${env.BUILD_NUMBER} - ${currentBuild.result}",
+    subject: "${env.JOB_BASE_NAME} # ${env.BUILD_NUMBER} - ${status}",
     to: 'rajivvaidya212@outlook.com'
     
 }
+
+
+ post {  
+         
+         success {  
+           sendEmail("Success")		
+         }  
+         failure {  
+            sendEmail("Failed")		  
+         }  
+         unstable {  
+            sendEmail("Unstable")		
+         }  
+         changed {  
+             echo 'This will run only if the state of the Pipeline has changed'  
+             echo 'For example, if the Pipeline was previously failing but is now successful'  
+         }  
+     }  
