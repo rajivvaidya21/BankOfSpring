@@ -71,8 +71,7 @@ agent any
 		       rtDockerPush(
 			    serverId: SERVER_ID,
 			    image: 'bankofspring',
-			    targetRepo: 'default-docker-local',
-				failNoOp: true
+			    targetRepo: 'default-docker-local'
 			   
 )
 		        
