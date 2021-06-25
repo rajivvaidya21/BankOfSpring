@@ -61,8 +61,7 @@ agent any
 		
 		stage('Push Docker Image to Artifactory'){
 		     when {
-		                
-			pushDockerImage true		         
+		       expression { pushDockerImage == true }           
 		                
 		     }
 
