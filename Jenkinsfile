@@ -1,4 +1,5 @@
 def SERVER_ID =  "jfrog"
+def pushDockerImage = true
 pipeline{
 
 agent any
@@ -57,6 +58,31 @@ agent any
 			
 			}
 		}
+		
+		stage('Push Docker Image to Artifactory'){
+		     when {
+		                
+			pushDockerImage true		         
+		                
+		     }
+
+		    steps{
+		        
+		       rtDockerPush(
+			    serverId: SERVER_ID,
+			    image: 'bankofspring',
+			    targetRepo: 'default-docker-local',
+				failNoOp: true
+			   
+)
+		        
+		        
+		    }
+
+		    
+		    
+		}
+
 			
 	}
 	
