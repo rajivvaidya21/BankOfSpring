@@ -69,7 +69,7 @@ agent any
 		        
 		       rtDockerPush(
 			    serverId: SERVER_ID,
-			    image: 'bankofspring',
+			    image: ARTIFACTORY_DOCKER_REGISTRY +'/bankofspring',
 			    targetRepo: 'default-docker-local'
 			   
 )
