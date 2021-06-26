@@ -1,5 +1,5 @@
 def SERVER_ID =  "jfrog"
-def pushDockerImage = true
+def pushDockerImage = false
 pipeline{
 
 agent any
@@ -69,18 +69,47 @@ agent any
 		        
 		       rtDockerPush(
 			    serverId: SERVER_ID,
-			    image: ARTIFACTORY_DOCKER_REGISTRY +'/bankofspring',
+			    image: 'rajivvaidya.jfrog.io/default-docker-local' +'/bankofspring',
 			    targetRepo: 'default-docker-local'
 			   
 )
-		        
-		        
+		                
 		    }
-
-		    
-		    
+ 
 		}
-
+		
+		
+		
+		stage('Deploy'){
+		    
+		    
+		     agent {
+                docker {
+                    image 'bankofspring'
+                    reuseNode true
+                }
+            }
+            steps {
+                  rtDownload (
+				        serverId: SERVER_ID,
+				        spec:
+				            """{
+				              "files": [
+				                {
+				                  "pattern": "default-maven-local/bank/*.jar",
+				              	  "target": "./"
+				                }
+				             ]
+				            }""",
+        			failNoOp: true
+    				)
+    				
+    				sh 'ls'
+    				sh 'java -jar bankofspring-0.0.1-SNAPSHOT.jar'
+			
+            }
+        }
+		    
 			
 	}
 	
