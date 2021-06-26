@@ -103,8 +103,9 @@ agent any
 				            }""",
         			failNoOp: true
     				)
-    				sh "cd ./BankOfSpring/bank"
+    				sh "cd BankOfSpring"
     				sh 'ls'
+    				sh "cd bank"
     				sh 'java -jar bankofspring-0.0.1-SNAPSHOT.jar'
 			
             }
